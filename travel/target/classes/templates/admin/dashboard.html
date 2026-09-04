@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+    <!-- 共通meta -->
+    <div th:replace="~{fragment :: meta}"></div>
+
+    <!-- 共通CSS -->
+    <div th:replace="~{fragment :: styles}"></div>
+
+    <title>管理者ダッシュボード</title>
+
+</head>
+
+<body>
+
+<div class="moattravel-wrapper">
+
+    <!-- ============================= -->
+    <!-- ヘッダー -->
+    <!-- ============================= -->
+    <div th:replace="~{fragment :: header}"></div>
+
+
+    <!-- ============================= -->
+    <!-- メイン -->
+    <!-- ============================= -->
+    <main>
+
+        <div class="container moattravel-container py-5">
+
+            <!-- ============================== -->
+            <!-- タイトル -->
+            <!-- ============================== -->
+            <div class="text-center mb-4">
+
+                <h1 class="fw-bold">
+                    管理者ダッシュボード
+                </h1>
+
+            </div>
+
+
+            <!-- ================================================== -->
+            <!-- 予約一覧 -->
+            <!-- ================================================== -->
+            <div class="card shadow-sm mb-5">
+
+                <div class="card-header bg-white">
+
+                    <h2 class="h5 mb-0 fw-bold">
+                        予約一覧
+                    </h2>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    <!-- ============================== -->
+                    <!-- タブ -->
+                    <!-- ============================== -->
+                    <ul class="nav nav-tabs mb-4"
+                        id="reservationTabs"
+                        role="tablist">
+
+                        <!-- 本日 -->
+                        <li class="nav-item" role="presentation">
+
+                            <button class="nav-link active"
+                                    id="today-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#today"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="today"
+                                    aria-selected="true">
+
+                                本日
+
+                                <span class="badge bg-secondary ms-1"
+                                      th:text="${todayReservations.size()}">
+                                    0
+                                </span>
+
+                            </button>
+
+                        </li>
+
+
+                        <!-- 翌日 -->
+                        <li class="nav-item" role="presentation">
+
+                            <button class="nav-link"
+                                    id="tomorrow-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#tomorrow"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="tomorrow"
+                                    aria-selected="false">
+
+                                翌日
+
+                                <span class="badge bg-secondary ms-1"
+                                      th:text="${tomorrowReservations.size()}">
+                                    0
+                                </span>
+
+                            </button>
+
+                        </li>
+
+
+                        <!-- 今週 -->
+                        <li class="nav-item" role="presentation">
+
+                            <button class="nav-link"
+                                    id="week-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#week"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="week"
+                                    aria-selected="false">
+
+                                今週
+
+                                <span class="badge bg-secondary ms-1"
+                                      th:text="${weekReservations.size()}">
+                                    0
+                                </span>
+
+                            </button>
+
+                        </li>
+
+                    </ul>
+
+
+                    <!-- ============================== -->
+                    <!-- タブの内容 -->
+                    <!-- ============================== -->
+                    <div class="tab-content">
+
+
+                        <!-- ================================================== -->
+                        <!-- 本日 -->
+                        <!-- ================================================== -->
+                        <div class="tab-pane fade show active"
+                             id="today"
+                             role="tabpanel"
+                             aria-labelledby="today-tab">
+
+                            <div class="table-responsive">
+
+                                <table class="table table-striped table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th>チェックイン</th>
+                                            <th>チェックアウト</th>
+                                            <th>宿名</th>
+                                            <th>予約者</th>
+                                            <th>宿泊人数</th>
+                                            <th>金額</th>
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody>
+
+                                        <tr th:each="reservation : ${todayReservations}">
+
+                                            <td th:text="${reservation.checkinDate}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.checkoutDate}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.house.name}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.user.name}">
+                                                -
+                                            </td>
+
+                                            <td>
+
+                                                <span th:text="${reservation.numberOfPeople}">
+                                                    0
+                                                </span>
+
+                                                人
+
+                                            </td>
+
+                                            <td>
+
+                                                <span th:text="${reservation.amount}">
+                                                    0
+                                                </span>
+
+                                                円
+
+                                            </td>
+
+                                        </tr>
+
+
+                                        <tr th:if="${todayReservations.isEmpty()}">
+
+                                            <td colspan="6"
+                                                class="text-center text-muted py-4">
+
+                                                本日の予約はありません
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================================================== -->
+                        <!-- 翌日 -->
+                        <!-- ================================================== -->
+                        <div class="tab-pane fade"
+                             id="tomorrow"
+                             role="tabpanel"
+                             aria-labelledby="tomorrow-tab">
+
+                            <div class="table-responsive">
+
+                                <table class="table table-striped table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th>チェックイン</th>
+                                            <th>チェックアウト</th>
+                                            <th>宿名</th>
+                                            <th>予約者</th>
+                                            <th>宿泊人数</th>
+                                            <th>金額</th>
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody>
+
+                                        <tr th:each="reservation : ${tomorrowReservations}">
+
+                                            <td th:text="${reservation.checkinDate}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.checkoutDate}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.house.name}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.user.name}">
+                                                -
+                                            </td>
+
+                                            <td>
+
+                                                <span th:text="${reservation.numberOfPeople}">
+                                                    0
+                                                </span>
+
+                                                人
+
+                                            </td>
+
+                                            <td>
+
+                                                <span th:text="${reservation.amount}">
+                                                    0
+                                                </span>
+
+                                                円
+
+                                            </td>
+
+                                        </tr>
+
+
+                                        <tr th:if="${tomorrowReservations.isEmpty()}">
+
+                                            <td colspan="6"
+                                                class="text-center text-muted py-4">
+
+                                                翌日の予約はありません
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================================================== -->
+                        <!-- 今週 -->
+                        <!-- ================================================== -->
+                        <div class="tab-pane fade"
+                             id="week"
+                             role="tabpanel"
+                             aria-labelledby="week-tab">
+
+                            <div class="table-responsive">
+
+                                <table class="table table-striped table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th>チェックイン</th>
+                                            <th>チェックアウト</th>
+                                            <th>宿名</th>
+                                            <th>予約者</th>
+                                            <th>宿泊人数</th>
+                                            <th>金額</th>
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody>
+
+                                        <tr th:each="reservation : ${weekReservations}">
+
+                                            <td th:text="${reservation.checkinDate}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.checkoutDate}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.house.name}">
+                                                -
+                                            </td>
+
+                                            <td th:text="${reservation.user.name}">
+                                                -
+                                            </td>
+
+                                            <td>
+
+                                                <span th:text="${reservation.numberOfPeople}">
+                                                    0
+                                                </span>
+
+                                                人
+
+                                            </td>
+
+                                            <td>
+
+                                                <span th:text="${reservation.amount}">
+                                                    0
+                                                </span>
+
+                                                円
+
+                                            </td>
+
+                                        </tr>
+
+
+                                        <tr th:if="${weekReservations.isEmpty()}">
+
+                                            <td colspan="6"
+                                                class="text-center text-muted py-4">
+
+                                                今週の予約はありません
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {% comment %} <!-- 管理ページへのリンク -->
+           
+            <div class="d-flex justify-content-end mb-4">
+
+                <a th:href="@{/admin/users}"
+                   class="btn text-white shadow-sm moattravel-btn me-2">
+
+                    会員一覧
+
+                </a>
+
+
+                <a th:href="@{/admin/houses}"
+                   class="btn text-white shadow-sm moattravel-btn">
+
+                    民宿管理
+
+                </a> {% endcomment %}
+
+            </div>
+            <!-- 月別売上 -->
+            <div class="card shadow-sm mb-5">
+
+                <div class="card-header bg-white">
+
+                    <h2 class="h5 mb-0 fw-bold">
+                        月別売上推移
+                    </h2>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    <div style="height: 400px;">
+
+                        <canvas id="salesChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================== -->
+            <!-- 人気の宿 -->
+            <!-- ================================================== -->
+            <div class="card shadow-sm mb-5">
+
+                <div class="card-header bg-white">
+
+                    <h2 class="h5 mb-0 fw-bold">
+                        人気の宿ランキング
+                    </h2>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped table-hover">
+
+                            <thead>
+
+                                <tr>
+                                    <th>順位</th>
+                                    <th>宿名</th>
+                                    <th>予約数</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr th:each="house, status : ${popularHouses}">
+
+                                    <td th:text="${status.count}">
+                                        1
+                                    </td>
+
+                                    <td th:text="${house[0]}">
+                                        宿名
+                                    </td>
+
+                                    <td>
+
+                                        <span th:text="${house[1]}">
+                                            0
+                                        </span>
+
+                                        件
+
+                                    </td>
+
+                                </tr>
+
+
+                                <tr th:if="${popularHouses.isEmpty()}">
+
+                                    <td colspan="3"
+                                        class="text-center text-muted py-4">
+
+                                        予約データがありません
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- フッター -->
+    <!-- ============================= -->
+    <div th:replace="~{fragment :: footer}"></div>
+
+</div>
+
+
+<!-- ================================================== -->
+<!-- Chart.js -->
+<!-- ================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- ================================================== -->
+<!-- 売上グラフ -->
+<!-- ================================================== -->
+<script th:inline="javascript">
+
+    const monthlySales = /*[[${monthlySales}]]*/ {};
+
+    const labels = Object.keys(monthlySales);
+
+    const sales = Object.values(monthlySales);
+
+    const canvas = document.getElementById('salesChart');
+
+    if (canvas) {
+
+        new Chart(canvas, {
+
+            type: 'line',
+
+            data: {
+
+                labels: labels,
+
+                datasets: [{
+
+                    label: '売上',
+
+                    data: sales,
+
+                    tension: 0.3,
+
+                    fill: false
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+
+                            callback: function(value) {
+
+                                return value.toLocaleString() + '円';
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
+
+</script>
+
+
+<!-- ============================= -->
+<!-- 共通script -->
+<!-- ============================= -->
+<div th:replace="~{fragment :: scripts}"></div>
+
+
+</body>
+
+</html>
