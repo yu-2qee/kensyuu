@@ -1,0 +1,29 @@
+package com.example.travelVar1.form;
+
+import java.time.LocalDate;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import lombok.Data;
+
+@Data
+public class ReservationInputForm {
+@NotBlank(message="チェックインとチェックアウトの日にち選択してください。")
+private String fromCheckinDateToCheckoutDate;
+@NotNull(message="宿泊人数を入力してください")
+@Min(value=1,message="宿泊人数は一人以上にしてください")
+private Integer numberOfPeople;
+
+
+public LocalDate getCheckinDate() {
+	String[] checkinDateAndCheckoutDate=getFromCheckinDateToCheckoutDate().split("から");
+	return LocalDate.parse(checkinDateAndCheckoutDate[0].trim());
+}
+
+public LocalDate getCheckoutDate() {
+	String[] checkinDateAndCheckoutDate=getFromCheckinDateToCheckoutDate().split("から");
+	return LocalDate.parse(checkinDateAndCheckoutDate[1].trim());
+}
+}
