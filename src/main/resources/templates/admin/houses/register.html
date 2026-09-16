@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+<div th:replace="~{fragment :: meta}"></div>
+
+<div th:replace="~{fragment :: styles}"></div>
+
+<title>民宿登録</title>
+
+</head>
+
+<body>
+
+<div class="moattravel-wrapper">
+
+<div th:replace="~{fragment :: header}"></div>
+
+
+<main>
+
+<div class="container pt-4 pb-5 moattravel-container">
+
+<div class="row justify-content-center">
+
+<div class="col-xl-5 col-lg-6 col-md-8">
+
+<nav class="mb-4" aria-label="breadcrumb">
+
+<ol class="breadcrumb mb-0">
+
+<li class="breadcrumb-item"><a th:href="@{/admin/houses}">民宿一覧</a></li>
+
+<li class="breadcrumb-item active" aria-current="page">民宿登録</li>
+
+</ol>
+
+</nav>
+
+
+<h1 class="mb-4 text-center">民宿登録</h1>
+
+
+<form method="post" th:action="@{/admin/houses/create}" th:object="${houseRegisterForm}" enctype="multipart/form-data">
+
+<div class="form-group row mb-3">
+
+<div class="col-md-4">
+
+<label for="name" class="col-form-label fw-bold">民宿名</label>
+
+</div>
+
+
+<div class="col-md-8">
+
+<div th:if="${#fields.hasErrors('name')}" class="text-danger small mb-2" th:errors="*{name}"></div>
+
+<input type="text" class="form-control" th:field="*{name}" autofocus>
+
+</div>
+
+</div>
+
+
+<!--<div class="form-group row mb-3">-->
+
+<!--<div class="col-md-4">-->
+
+<!--<label for="imageFile" class="col-form-label fw-bold">フリガナ</label>-->
+
+<!--</div>-->
+
+
+<!--<div class="col-md-8">-->
+
+<!--<div th:if="${#fields.hasErrors('imageFile')}" class="text-danger small mb-2" th:errors="*{imageFile}"></div>-->
+
+<!--<input type="file" class="form-control" th:field="*{imageFile}">-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+
+<div class="form-group row mb-3">
+
+<div class="col-md-4">
+
+<label for="name" class="col-form-label fw-bold">民宿の説明</label>
+
+</div>
+
+<div class="col-md-8">
+
+<div th:if="${#fields.hasErrors('name')}" class="text-danger small mb-2" th:errors="*{name}"></div>
+
+<input type="text" class="form-control" th:field="*{description}" autofocus>
+
+</div>
+
+</div>
+
+<div class="form-group row mb-3">
+
+<div class="col-md-4">
+
+<label for="name" class="col-form-label fw-bold">宿泊料金</label>
+
+</div>
+
+<div class="col-md-8">
+
+<div th:if="${#fields.hasErrors('name')}" class="text-danger small mb-2" th:errors="*{name}"></div>
+
+<input type="number" class="form-control" th:field="*{price}" autofocus>
+
+</div>
+
+</div>
+
+<div class="form-group row mb-3">
+
+<div class="col-md-4">
+
+<label for="name" class="col-form-label fw-bold">定員</label>
+
+</div>
+
+<div class="col-md-8">
+
+<div th:if="${#fields.hasErrors('name')}" class="text-danger small mb-2" th:errors="*{name}"></div>
+
+<input type="number" class="form-control" th:field="*{capacity}" autofocus>
+
+</div>
+
+</div>
+
+<div class="form-group row mb-3">
+
+<div class="col-md-4">
+
+<label for="name" class="col-form-label fw-bold">郵便番号</label>
+
+</div>
+
+<div class="col-md-8">
+
+<div th:if="${#fields.hasErrors('name')}" class="text-danger small mb-2" th:errors="*{name}"></div>
+
+<input type="text" class="form-control" th:field="*{PostalCode}" autofocus>
+
+</div>
+
+</div>
+
+<div class="form-group row mb-3">
+
+<div class="col-md-4">
+
+<label for="name" class="col-form-label fw-bold">住所</label>
+
+</div>
+
+<div class="col-md-8">
+
+<div th:if="${#fields.hasErrors('name')}" class="text-danger small mb-2" th:errors="*{name}"></div>
+
+<input type="text" class="form-control" th:field="*{address}" autofocus>
+
+</div>
+
+</div>
+
+
+<div class="form-group row mb-3">
+
+<div class="col-md-4">
+
+<label for="name" class="col-form-label fw-bold">電話番号</label>
+
+</div>
+
+<div class="col-md-8">
+
+<div th:if="${#fields.hasErrors('name')}" class="text-danger small mb-2" th:errors="*{name}"></div>
+
+<input type="text" class="form-control" th:field="*{phoneNumber}" autofocus>
+
+</div>
+
+</div>
+<!-- 選択された画像の表示場所 -->
+
+<div class="row" id="imagePreview"></div>
+
+
+<!--======== 中略（説明・宿泊料金・定員・郵便番号・住所・電話番号も同じパターン） ========-->
+
+
+<div class="form-group d-flex justify-content-center my-4">
+
+<button type="submit" class="btn text-white shadow-sm w-50 moattravel-btn">登録</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<div th:replace="~{fragment :: footer}"></div>
+
+</div>
+
+<div th:replace="~{fragment :: scripts}"></div>
+
+<script th:src="@{/js/preview.js}"></script>
+
+</body>
+
+</html>
