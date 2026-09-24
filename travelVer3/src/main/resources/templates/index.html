@@ -21,7 +21,15 @@
 
 
 <main>
-
+	<aside class="aside">
+		<h2>人気の宿ランキング</h2>
+		<ol class="ranking-list"></ol>
+		<li th:each="house,stat:${popularHouses}"class="ranking-item">
+	                <span class="rank-number"th:text="${stat.count}+'位'"></span>
+	 <a th:href="@{/houses/{id}(id=${house.id})}"th:text="${house.name}"></a>
+ </li>       
+</ol>
+</aside>
 <div class="container pt-4 pb-5 moattravel-container">
 
 <!--======== 中略（loggedIn・loggedOut・successMessageの表示はこれまでどおり） ========-->
@@ -44,7 +52,7 @@
 </div>
 
 
-<h2 class="text-center mb-3">新着</h2>
+<!--<h2 class="text-center mb-3">新着</h2>-->
 
 <div class="row row-cols-lg-5 row-cols-2 g-3 mb-5">
 
@@ -112,7 +120,6 @@
 <th>東北</th>
 
 <td>
-<!--	青森、岩手、秋田、宮城、山形、福島）-->
 <a th:href="@{/houses?area=青森県}" class="me-2">青森県</a>
 <a th:href="@{/houses?area=岩手県}" class="me-2">岩手県</a>
 <a th:href="@{/houses?area=秋田県}" class="me-2">秋田県</a>
@@ -129,7 +136,6 @@
 <th>関東</th>
 
 <td>
-<!--	茨城、栃木、群馬、埼玉、千葉、東京、神奈川-->
 <a th:href="@{/houses?area=茨城県}" class="me-2">茨城県</a>
 <a th:href="@{/houses?area=栃木県}" class="me-2">栃木県</a>
 <a th:href="@{/houses?area=群馬県}" class="me-2">群馬県</a>
@@ -146,7 +152,6 @@
 <th>東海</th>
 
 <td>
-<!--	新潟、富山、石川、福井、山梨、長野、岐阜、静岡、愛知-->
 <a th:href="@{/houses?area=新潟県}" class="me-2">新潟県</a>
 <a th:href="@{/houses?area=富山県}" class="me-2">富山県</a>
 <a th:href="@{/houses?area=石川県}" class="me-2">石川県</a>
@@ -165,7 +170,6 @@
 <th>近畿</th>
 
 <td>
-<!--	滋賀、三重、京都、大阪、奈良、和歌山、兵庫）-->
 <a th:href="@{/houses?area=滋賀県}" class="me-2">滋賀県</a>
 <a th:href="@{/houses?area=三重県}" class="me-2">三重県</a>
 <a th:href="@{/houses?area=京都府}" class="me-2">京都府</a>
@@ -183,7 +187,6 @@
 <th>中国</th>
 
 <td>
-<!--	鳥取、島根、岡山、広島、山口）-->
 <a th:href="@{/houses?area=鳥取県}" class="me-2">鳥取県</a>
 <a th:href="@{/houses?area=島根県}" class="me-2">島根県</a>
 <a th:href="@{/houses?area=岡山県}" class="me-2">岡山県</a>
@@ -199,7 +202,6 @@
 
 <th>四国</th>
 
-<td><!--徳島、香川、愛媛、高知）-->
 
 <a th:href="@{/houses?area=徳島県}" class="me-2">徳島県</a>
 <a th:href="@{/houses?area=香川県}" class="me-2">香川県</a>
@@ -210,7 +212,6 @@
 </tr>
 
 <tr>
-<!--	福岡、佐賀、長崎、大分、熊本、宮崎、鹿児島、沖縄-->
 <th>	九州</th>
 
 <td>

@@ -16,7 +16,7 @@ private String name;
 @NotBlank(message="フリガナを入力してください")
 private String furigana;
 @NotBlank(message="郵便番号を入力してください")
-private String postlCode;
+private String postalCode;
 @NotBlank(message="住所を入力してください")
 private String address  ;
 @NotBlank(message="電話番号を入力してください")

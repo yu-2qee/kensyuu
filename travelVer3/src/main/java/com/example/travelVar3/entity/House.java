@@ -24,7 +24,6 @@ private String name;
 private String imageName;
 @Column(name="description")
 private String description;
-
 @Column(name="price")
 private Integer price;
 @Column(name="capacity")

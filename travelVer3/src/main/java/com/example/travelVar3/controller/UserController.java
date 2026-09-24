@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.samuraitravel1.form.UserEditForm;
 import com.example.travelVar3.entity.User;
+import com.example.travelVar3.form.UserEditForm;
 import com.example.travelVar3.repository.UserRepository;
 import com.example.travelVar3.security.UserDetailsImpl;
 import com.example.travelVar3.service.UserService;
