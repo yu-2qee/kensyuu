@@ -1,175 +1,180 @@
 html {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background-color: #f5f1e8;
-    background-image:
-        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.3) 2px, transparent 2px),
-        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.2) 2px, transparent 2px);
-    background-size: 40px 40px;
-    color: #333;
+	font-family: 'Noto Sans JP', sans-serif;
+	background-color: #f5f1e8;
+	background-image:
+		radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.3) 2px, transparent 2px),
+		radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+	background-size: 40px 40px;
+	color: #333;
 }
 
 h1 {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 
 .aside {
-    width: 250px;
-    flex-shrink: 0;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-right:5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	width: 250px;
+	flex-shrink: 0;
+	background-color: #ffffff;
+	border-radius: 8px;
+	padding: 20px;
+	margin-right: 5px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .aside h2 {
-    font-size: 18px;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #2c8ba0;
+	font-size: 18px;
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #2c8ba0;
 }
 
 .ranking-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
+
 .ranking-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 0;
+	border-bottom: 1px solid #eee;
 }
+
 main {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
 }
 
 .moattravel-container {
-    flex: 1;
-    min-width: 0;
+	flex: 1;
+	min-width: 0;
 }
+
 .ranking-item:last-child {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 .rank-number {
-    font-weight: bold;
-    color: #e67e22;
-    min-width: 32px;
-    font-size: 16px;
+	font-weight: bold;
+	color: #e67e22;
+	min-width: 32px;
+	font-size: 16px;
 }
+
 .ranking-item a {
-    color: #333;
-    text-decoration: none;
+	color: #333;
+	text-decoration: none;
 }
 
 .ranking-item a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
+
 h3 {
-    font-size: 1.25rem;
+	font-size: 1.25rem;
 }
 
 .moattravel-card-link {
-    transition: 0.3s;
+	transition: 0.3s;
 }
 
 .moattravel-card-link:hover {
-    opacity: 0.7;
+	opacity: 0.7;
 }
 
 .moattravel-horizontal-card-image {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
+	width: 100%;
+	height: 240px;
+	object-fit: cover;
 }
 
 .moattravel-dropdown-item:active {
-    background-color: #5196a6;
+	background-color: #5196a6;
 }
 
 .moattravel-pre-wrap {
-    white-space: pre-wrap;
+	white-space: pre-wrap;
 }
 
 footer {
-    width: 100%;
-    height: 60px;
-    background-color: #f2f0eb;
+	width: 100%;
+	height: 60px;
+	background-color: #f2f0eb;
 }
 
 .moattravel-link-danger {
-    color: #f2594b;
+	color: #f2594b;
 }
 
 .moattravel-link-danger:hover {
-    color: #a63c3c;
+	color: #a63c3c;
 }
 
 .moattravel-btn-danger {
-    background-color: #f2594b !important;
-    transition: 0.1s;
+	background-color: #f2594b !important;
+	transition: 0.1s;
 }
 
 .moattravel-btn-danger:hover {
-    opacity: 0.8;
+	opacity: 0.8;
 }
 
 .moattravel-wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
 }
 
 main {
-    flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 .moattravel-navbar {
-    min-height: 60px;
+	min-height: 60px;
 }
 
 .moattravel-logo {
-    height: 70px;
+	height: 70px;
 }
 
 .moattravel-btn {
-    background-color: #5196a6 !important;
-    transition: 0.1s;
+	background-color: #5196a6 !important;
+	transition: 0.1s;
 }
 
 .moattravel-btn:hover {
-    opacity: 0.8;
+	opacity: 0.8;
 }
 
 .moattravel-page-link {
-    color: #5196a6;
+	color: #5196a6;
 }
 
 .moattravel-page-link:hover {
-    color: #407784;
+	color: #407784;
 }
 
 .moattravel-active {
-    background-color: #5196a6 !important;
-    border-color: #5196a6 !important;
+	background-color: #5196a6 !important;
+	border-color: #5196a6 !important;
 }
 
 .form-control::file-selector-button {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 @media screen and (min-width: 1400px) {
-    .moattravel-container {
-        max-width: 1200px;
-    }
+	.moattravel-container {
+		max-width: 1200px;
+	}
 }
