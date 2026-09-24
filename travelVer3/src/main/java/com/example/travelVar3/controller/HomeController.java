@@ -30,7 +30,6 @@ public class HomeController {
 		
 		List<Reservation> allReservations = reservationRepository.findAll();
 		//予約件数とカウント
-
 		Map<House, Long> count = allReservations.stream()
 				.collect(Collectors.groupingBy(Reservation::getHouse, Collectors.counting()));
 		

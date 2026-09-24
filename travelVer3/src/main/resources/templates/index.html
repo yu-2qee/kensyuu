@@ -23,16 +23,20 @@
 <main>
 	<aside class="aside">
 		<h2>人気の宿ランキング</h2>
-		<ol class="ranking-list"></ol>
-		<li th:each="house,stat:${popularHouses}"class="ranking-item">
-	                <span class="rank-number"th:text="${stat.count}+'位'"></span>
-	 <a th:href="@{/houses/{id}(id=${house.id})}"th:text="${house.name}"></a>
- </li>       
-</ol>
-</aside>
-<div class="container pt-4 pb-5 moattravel-container">
-
-<!--======== 中略（loggedIn・loggedOut・successMessageの表示はこれまでどおり） ========-->
+		<ol class="ranking-list">
+			<li th:each="house, stat : ${popularHouses}" class="ranking-item">
+				<span class="rank-number" th:text="${stat.count}+'位'"></span>
+				<a th:href="@{/houses/{id}(id=${house.id})}" th:text="${house.name}"></a>
+			</li>
+		</ol>
+		<h2 class="mt-4">新着の宿</h2>
+		<ol class="ranking-list">
+			<li th:each="house, houseStat : ${newHouses}" class="ranking-item" th:if="${houseStat.index < 3}">
+				<a th:href="@{/houses/{id}(id=${house.id})}" th:text="${house.name}"></a>
+			</li>
+		</ol>
+	</aside>
+	<div class="container pt-4 pb-5 moattravel-container">
 
 
 <div class="d-flex justify-content-center">
@@ -105,7 +109,7 @@
 
 <tr>
 
-<th>北海道</th>
+<th style="width: 80px;">北海道</th>
 
 <td>
 
@@ -199,19 +203,14 @@
 
 
 <tr>
-
-<th>四国</th>
-
-
-<a th:href="@{/houses?area=徳島県}" class="me-2">徳島県</a>
-<a th:href="@{/houses?area=香川県}" class="me-2">香川県</a>
-<a th:href="@{/houses?area=愛媛県}" class="me-2">愛媛県</a>
-<a th:href="@{/houses?area=高知県}" class="me-2">高知県</a>
-
-</td>
+	<th>四国</th>
+	<td>
+		<a th:href="@{/houses?area=徳島県}" class="me-2">徳島県</a>
+		<a th:href="@{/houses?area=香川県}" class="me-2">香川県</a>
+		<a th:href="@{/houses?area=愛媛県}" class="me-2">愛媛県</a>
+		<a th:href="@{/houses?area=高知県}" class="me-2">高知県</a>
+	</td>
 </tr>
-
-<tr>
 <th>	九州</th>
 
 <td>
