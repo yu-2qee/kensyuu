@@ -29,12 +29,12 @@
 				<a th:href="@{/houses/{id}(id=${house.id})}" th:text="${house.name}"></a>
 			</li>
 		</ol>
-		<h2 class="mt-4">新着の宿</h2>
-		<ol class="ranking-list">
-			<li th:each="house, houseStat : ${newHouses}" class="ranking-item" th:if="${houseStat.index < 3}">
-				<a th:href="@{/houses/{id}(id=${house.id})}" th:text="${house.name}"></a>
-			</li>
-		</ol>
+<!--		<h2 class="mt-4">新着の宿</h2>-->
+<!--		<ol class="ranking-list">-->
+<!--			<li th:each="house, houseStat : ${newHouses}" class="ranking-item" th:if="${houseStat.index < 3}">-->
+<!--				<a th:href="@{/houses/{id}(id=${house.id})}" th:text="${house.name}"></a>-->
+<!--			</li>-->
+<!--		</ol>-->
 	</aside>
 	<div class="container pt-4 pb-5 moattravel-container">
 

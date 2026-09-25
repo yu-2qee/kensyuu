@@ -27,12 +27,12 @@ public class HomeController {
 	public String index(Model model) {
 		List<House> newHouses = houseRepository.findTop10ByOrderByCreatedAtDesc();
 		model.addAttribute("newHouses", newHouses);
-		
+
 		List<Reservation> allReservations = reservationRepository.findAll();
 		//予約件数とカウント
 		Map<House, Long> count = allReservations.stream()
 				.collect(Collectors.groupingBy(Reservation::getHouse, Collectors.counting()));
-		
+
 		List<HouseRanking> popularHouses = count.entrySet().stream()
 				.sorted((a, b) -> (int) (b.getValue() - a.getValue()))
 				.limit(5)
